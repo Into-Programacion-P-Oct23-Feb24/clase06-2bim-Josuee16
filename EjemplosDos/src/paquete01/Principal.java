@@ -20,18 +20,18 @@ public class Principal {
         String nombre;
         String ciudad;
         String apellidoRetornado;
-        
+        String acumulador;
+
         double[] misNotas;
         double promedio;
-        
+
         nombre = DatoPersonal.obtenerNombre();
         apellidoRetornado = DatoPersonal.obtenerApellido();
         ciudad = DatosUbicacion.obtenerCiudad();
         misNotas = DatoAcademico.obtenerNotas(4);
         promedio = DatoFinal.obtenerPromedio(misNotas);
-        
-        
-        System.out.printf("Los datos ingresados son:\n"
+
+        acumulador = String.format("Los datos ingresados son:\n"
                 + "Nombre: %s\n"
                 + "Apellido: %s\n"
                 + "Ciudad: %s\n"
@@ -40,6 +40,15 @@ public class Principal {
                 apellidoRetornado,
                 ciudad,
                 promedio);
+        for (int i = 0; i < misNotas.length; i++) {
+            acumulador = String.format("%s\nNotas %s: %.2f",
+                    acumulador, i + 1,
+                    misNotas[i]);
+
+        }
+        acumulador = String.format("%s\nPromedio: %.2f", acumulador,
+                promedio);
+        System.out.printf("%s",acumulador);
     }
-    
+   
 }
